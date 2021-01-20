@@ -1,0 +1,111 @@
+BREVE EXPLICACION DEL PROYECTO PINCTURE IN PICTURE
+
+activar esta imagen en el botón de imagen implementar agregar un detector de eventos a un botón, vamos a tener 
+un elemento de video, vamos a ejecutar el método de solicitud de imagen en imagen
+la API de captura de pantalla es relativamente simple de usar, su único método es que los dispositivos multimedia 
+DOT obtienen medios de visualización cuyo trabajo es pedirle al usuario que seleccione una pantalla o parte de una pantalla 
+para capturar en forma de flujo de medios.
+nos pide que seleccionemos qué puede ver que tengo varias pantallas aquí, pero si solo tiene una pantalla, aún puede usar, 
+apuntar una sola ventana nos está notificando que estamos compartiendo y podemos presionar comenzar Y hemos iniciado 
+nuestra imagen en imagen podemos moverlo.
+
+
+estilo:
+el estilo de nuestro boton sera en 3D, utilizando sombras agradables, utlizaremos Pseudoclases para el usuario 
+al pasasr el mouse sobre el boton, tambien usaremos trasnsform al momento de presionar el boton bajara sutilmente.
+
+JavaScript:
+vamos a asignar una constante para cada elemento TMR al que queremos apuntar en este caso, nuestro video 
+y nuestro botón
+
+const videoElement = document.getElementById('video');
+
+('button') and then button.
+
+const button = document.getElementById('button');
+
+será una función asincrónica y le pedirá al usuario que seleccione un flujo de medios
+async function selectMediaStream() {}
+
+usaremos la declaración de captura para detectar cualquier error dentro de la consola y
+registrarlo hacer primero, vamos a agregar TRY y  CATCH.
+async function selectMediaStream() {
+ try {
+
+    } catch (error) {
+}
+
+
+capturar el contenido de la pantalla en vivo llamando a navigator.media devices.get display media.
+
+ const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+
+tendremos que hacer algo con la transmisión y para ello, usaremos nuestro elemento de video Entonces 
+primero, vayamos a nuestro HTML y vamos a eliminar este atributo .
+hidden por ahora.
+
+  <video id = "video" control height = "360" width = "640" hidden>
+
+Vamos a utilizar nuestro elemento de video y vamos a proporcionar una fuente con el objeto de origen.
+
+   videoElement.srcObject = mediaStream;
+
+
+vamos a escribir elemento de video en los metadatos cargados, y vamos a usar una función de flecha
+vamos a hacer video element.play.
+
+ videoElement.onloadedmetadata = () => {
+          videoElement.play();
+      }
+     
+estamos estableciendo una constante que va a tener nuestros datos de flujo de medios
+ y estamos esperando asignar eso hasta que el usuario haya seleccionado realmente qué pantalla o 
+ventana quiere compartir. luego estamos pasando ese flujo de medios a nuestro objeto de video 
+como cuando ese video ha cargado sus metadatos, va para llamar a la función que va a reproducir el video.
+
+ const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+      videoElement.srcObject = mediaStream;
+      videoElement.onloadedmetadata = () => {
+          videoElement.play();
+
+
+agregar un detector de eventos.
+
+button.addEventListener ();
+
+vamos a pasar una función dentro de nuestro detector de eventos en sí, un asincrónico 
+button.addEventListener ('clic', async () => {}
+
+primero es que desactivará el botón cuando hagamos clic en él
+
+button.disabled =true;
+
+esperar a que se vuelva a solicitar el elemento de video, así que solicite imagen en imagen
+
+
+videoElement.requestPictureInPicture ();
+
+agregaremos es que restableceremos el botón
+Entonces button.diseabled es igual a falso, por lo que esto solo sucederá si solicitamos con 
+éxito nuestra imagen e imagen.
+
+
+button.disabled = false;
+
+y listo ....
+
+Voy a elegir mi video muestra aquí para que vean que tenemos nuestro video allí.
+pero en lugar de tocar el video en absoluto, presionemos el botón de inicio.
+Entonces hace exactamente lo que queremos que haga. Tenemos nuestra imagen en imagen aquí. 
+Ahora vamos a deshacernos rápidamente del video y revisarlo nuevamente.
+así que regresemos al código. Regresemos a nuestro HTML y agregaremos de nuevo nuestro 
+atributo Hideen y luego lo guardaremos. saltar de nuevo a nuestro proyecto elegir nuestra 
+video muestra otra vez Y podemos ocultar eso y presionar el botón de inicio y perfect, eso es 
+exactamente lo que queríamos por lo que no hay ningún elemento de video en nuestra página y
+ podemos activar nuestra funcionalidad de imagen con solo presionar nuestro botón de inicio.
+
+
+
+
+
+
